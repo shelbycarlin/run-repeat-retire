@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../../public/My project.png';
 import '../../styles/Login.scss'
+import { getLogin } from '../actions/actions';
 
 //we need to have a login function that takes in props and we need to use redux to update the state and return elements for react
 const Login = () => {
@@ -43,9 +44,10 @@ const Login = () => {
 
           currentRotation.forEach((element) => {
           //we want to destructure all the properties from current rotataion element
-            const { shoeId, } = element
-            structuredRotation[shoeId]
+            const { shoeId, model, brand, shoe_type, miles, life_left, shoe_status } = element
+            structuredRotation[shoeId] = {model:model, brand:brand, shoeType:shoe_type, miles:miles, lifeLeft:life_left, shoeStatus:shoe_status}
           } )
+          dispatch(getLogin(usernameRef.current.value, user.firstName, user.lastName,  user.email, structuredRotation))
 
         }
       })
