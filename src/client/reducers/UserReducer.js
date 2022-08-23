@@ -1,61 +1,65 @@
 //import all as types from action types 
 //reducers return an entirely new object to replace portions of the intial state
-import { SIGNUP_SUCCESS, LOGIN_SUCCESS, LOGOUT_SUCCESS } from '../constants/Types.js';
+import { Types } from '../constants/Types.js';
 
 //we want to declare the intial state
 const intialState = {
   //each property that goes into intialState is considered a "slice" of the store 
-  loggedin: false,
-  username: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  currentRotation: {},
-  retiredShoes: {},
-
-  addShoeTypeToggle: false,
-  addShoeId: '',
-  addShoeModel: '',
-  addShoeBrand: '',
-  addShoeType: '',
-  addShoeMiles: '',
-  addShoePercentage: '',
+  profile: {
+    username: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    currentRotation: {},
+    retiredShoes: {},
+    addShoeTypeToggle: false,
+    addShoeId: '',
+    addShoeModel: '',
+    addShoeBrand: '',
+    addShoeType: '',
+    addShoeMiles: '',
+    addShoePercentage: '',
+  },
+  formSubmitted: false
   //addShoeImg:'',
 };
 
 const UserReducer = (state = intialState, action) => {
   switch (action.type) {
-  case LOGIN_SUCCESS: {
-    const { username, firstName, lastName, email, currentRotation } = action.payload;
+  case Types.LOGIN:
+    console.log('LOGIN', action.payload.user);
+    return {
+      ...state,
+      profile: action.payload.user,
+      formSubmitted: false
+    };
+
+
+  case Types.ADD_USER:
+    console.log('add user', action.payload.user);
 
     return {
       ...state,
-      loggedin:true,
-      username,
-      firstName,
-      lastName,
-      email,
-      currentRotation
+      profile: action.payload.user,
+      formSubmitted: false
+
     };
-  }
-  case SIGNUP_SUCCESS: {
-    const { username, firstName, lastName, email } = action.payload;
 
+  case Types.UPDATE_USER:
     return{
       ...state,
-      username,
-      firstName,
-      lastName,
-      email
+      profile:action.payload.user,
+      formSubmitted:false
+    }
 
-    }
-  }
-  case LOGOUT_SUCCESS: {
-    return{
+  case Types.FORM_SUBMITION_STATUS:
+    return {
       ...state,
-      loggedin:false,
-    }
-  }
+      formSubmitted: action.payload.status,
+    };
+
+  default:
+    return state;
   }
 };
 export default UserReducer;

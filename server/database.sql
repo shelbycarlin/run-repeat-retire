@@ -7,9 +7,10 @@ CREATE TYPE type AS ENUM (
   'Track Spikes',
   'X Country Spikes'
 );
+
 CREATE TYPE status AS ENUM (
-  'current',
-  'retired',
+  'Current',
+  'Retired'
 );
 
 CREATE TABLE Users (
@@ -29,5 +30,5 @@ CREATE TABLE Shoes (
   miles INT DEFAULT 0,
   life_left INT DEFAULT 0,
   shoe_status status DEFAULT 'Current',
-  user_id INT,
+  user_id INT
 );

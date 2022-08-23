@@ -3,9 +3,12 @@
 //export const ACTION_DESCRIPTION = 'ACTION_DESCRIPTION';
 
 //login and signup
-export const SIGNUP_SUCCESS = 'SIGNUPSUCCESS';
-export const LOGIN_SUCCESS = 'LOGINSUCCESS';
-export const LOGOUT_SUCCESS = 'LOGOUTSUCCESS';
+export const Types = {
+  LOGIN:'LOGIN',
+  ADD_USER:'ADD_USER',
+  UPDATE_USER:'UPDATE_USER',
+  FORM_SUBMITION_STATUS: 'FORM_SUBMITION_STATUS'
+}
 
 //---------State Updates--------
 //addShoe
