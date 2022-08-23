@@ -1,0 +1,80 @@
+@import './PaletteVariables.scss';
+
+.loginPage{
+background-color: $p-white;
+
+.logoContainer{
+  //position: relative;
+  background-color: $p-white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  //overflow: auto;
+  //max-height: 1000px;
+  img{
+  margin-top: -20%;
+  margin-left: -28%;
+  margin-right: -20%;
+  margin-bottom: -20%;
+
+  width: 700px;
+  height: 700px;
+ 
+
+  }
+  h1{
+    //display: inline;
+    //float: center;
+    color: $p-darkBlue;
+    font-size: 45px;
+    font-family:'Staatliches';
+    //margin-top: -100px;
+    //width: 20px;
+
+  }
+
+}
+.inputs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -2%;
+  h2{
+    color: $p-orange;
+    text-align: center;
+    font-size: 55px;
+    font-family: 'Staatliches';
+    margin-bottom: 2%;
+    //margin-bottom: -.00001%;
+  }
+  button{
+    margin-top: 18%;
+    margin-bottom: 3%;
+    color: $p-grey;
+    background-color: transparent;
+
+    border-radius: 10%;
+    border-color: $p-grey;
+
+    font-family:'Staatliches';
+    font-size: 25px;
+  }
+  button:hover{
+    background-color:$p-grey ;
+    color: $p-orange;
+  }
+  .needAcc{
+    font-family: 'Staatliches';
+    color: $p-mediumBlue;
+    a{
+      color: $p-darkBlue;
+    }
+    a:hover{
+      color: $p-red;
+    }
+  }
+
+}
+
+}
