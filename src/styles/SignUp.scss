@@ -1,0 +1,25 @@
+@import './PaletteVariables.scss';
+
+.signUpContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1{
+    color:$p-red;
+    font-family:'Staatliches';
+  }
+  button{
+    color: $p-grey;
+    background-color: transparent;
+
+    border-radius: 10%;
+    border-color: $p-grey;
+
+    font-family:'Staatliches';
+    font-size: 25px;
+  }
+  button:hover{
+    background-color:$p-grey ;
+    color: $p-orange;
+  }
+}

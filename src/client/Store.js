@@ -1,5 +1,6 @@
 //import the configurestore method from redux
-import { applyMiddleware, compose, configureStore} from '@reduxjs/toolkit';
+//applyMiddleware, compose,
+import { configureStore } from '@reduxjs/toolkit';
 //import thunk from 'redux-thunk'
 //we want to import the combined reducers here
 import reducer from './reducers/Reducers.js';
