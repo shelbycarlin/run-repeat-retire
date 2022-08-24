@@ -46,16 +46,22 @@ const UserReducer = (state = intialState, action) => {
     };
 
   case Types.UPDATE_USER:
-    return{
+    return {
       ...state,
-      profile:action.payload.user,
-      formSubmitted:false
-    }
+      profile: action.payload.user,
+      formSubmitted: false
+    };
 
   case Types.FORM_SUBMITION_STATUS:
     return {
       ...state,
       formSubmitted: action.payload.status,
+    };
+
+  case Types.LOGOUT:
+    return {
+      ...state,
+      formSubmitted: false,
     };
 
   default:

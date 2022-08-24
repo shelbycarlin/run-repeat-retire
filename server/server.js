@@ -6,7 +6,7 @@ const app = express();
 //we want to declare a port for the application to listen on
 const port = 3000;
 //we want to require our routes file in
-//const routes = require('./routes/routes.js');
+const router = require('./routes/Routes.js');
 //we want to intialize the express server
 app.use(express.json())
 
@@ -15,7 +15,7 @@ app.use(express.json())
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 //we want the app to use the api path way and use the routes from the routes files
-//app.use('/api', routes);
+app.use('/api', router);
 
 
 //local error handler 

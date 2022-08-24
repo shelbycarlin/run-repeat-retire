@@ -1,10 +1,10 @@
 import  React, { useRef } from 'react';
-//import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {Link, useNavigate } from 'react-router-dom';
 import Logo from '../../../public/Logo.png';
 import InputField from './InputField.jsx'
 import '../../styles/Login.scss'
-//import { getLogin } from '../actions/actions';
+import { login } from '../actions/actions';
 
 //we need to have a login function that takes in props and we need to use redux to update the state and return elements for react
 const Login = () => {
@@ -13,47 +13,47 @@ const Login = () => {
   // //declare passwordRef assign to useRef(null)
   const passwordRef = useRef(null);
 
-  // //decalre dispatch and assign to the useDispatch invocations 
-  // const dispatch = useDispatch();
-  // //declare navigate and assign to the useNavitgate invocation
-  // const navigate = useNavigate();
+  //decalre dispatch and assign to the useDispatch invocations 
+  const dispatch = useDispatch();
+  //declare navigate and assign to the useNavitgate invocation
+  const navigate = useNavigate();
 
   // //we want a handlesubmit functionality 
-  // const handleSubmit = () => {
-  //   //we want a fetch to /api/login path way 
-  //   fetch('/api/login', {
-  //     method:'POST',
-  //     headers: {
-  //       'Content-Type': 'application/JSON',
-  //     },
-  //     body: JSON.stringify({
-  //       username: usernameRef.current.value,
-  //       password: passwordRef.current.value,
-  //     })
-  //   })
-  //     .then((res) => {
-  //       return res.json()
-  //     })
-  //     .then((res) => {
-  //       if (res === 'unsucessful') {
-  //         window.alert('Incorrect credentials provided')
-  //       } else {
-  //       //response = user:{}, currentRotation:[]
-  //         const { user, currentRotation } = res;
+  const handleSubmit = () => {
+    //we want a fetch to /api/login path way 
+    fetch('/api/login', {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/JSON',
+      },
+      body: JSON.stringify({
+        username: usernameRef.current.value,
+        password: passwordRef.current.value,
+      })
+    })
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        if (res === 'unsucessful') {
+          window.alert('Incorrect credentials provided')
+        } else {
+        //response = user:{}, currentRotation:[]
+          const { user, currentRotation } = res;
 
-  //         const structuredRotation = {};
+          const structuredRotation = {};
 
-  //         currentRotation.forEach((element) => {
-  //         //we want to destructure all the properties from current rotataion element
-  //           const { shoeId, model, brand, shoe_type, miles, life_left, shoe_status } = element
-  //           structuredRotation[shoeId] = {model:model, brand:brand, shoeType:shoe_type, miles:miles, lifeLeft:life_left, shoeStatus:shoe_status}
-  //         } )
-  //         dispatch(getLogin(usernameRef.current.value, user.firstName, user.lastName,  user.email, structuredRotation))
+          currentRotation.forEach((element) => {
+          //we want to destructure all the properties from current rotataion element
+            const { shoeId, model, brand, shoe_type, miles, life_left, shoe_status } = element
+            structuredRotation[shoeId] = {model:model, brand:brand, shoeType:shoe_type, miles:miles, lifeLeft:life_left, shoeStatus:shoe_status}
+          } )
+          dispatch(login(usernameRef.current.value, user.firstName, user.lastName,  user.email, structuredRotation))
+          navigate('../', {replace: true});
+        }
+      })
 
-  //       }
-  //     })
-
-  // }
+  }
   //this will be a post request 
   //header type is app/json
   //body we want to json stringify and pass the username and password in the req body 
@@ -72,11 +72,12 @@ const Login = () => {
       
         <div>
           {/* need to add login handle click */}
-          <button>Login</button>
+          <button onClick={handleSubmit}>Login</button>
         </div>
         <div className='needAcc'>
+          <Link to='/signup' className='create-account'>Create an Account Here</Link>
           {/* <p>Need an Account <Link to='/signup' className='create-account'>Create an Account Here</Link></p> */}
-          <p>Need an Account <a href="">Create Account Here</a></p>
+          {/* <p>Need an Account <a href="">Create Account Here</a></p> */}
         </div>
       </div>
     </div>
