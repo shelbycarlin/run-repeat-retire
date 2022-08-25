@@ -28,7 +28,7 @@ CREATE TABLE Shoes (
   brand varchar NOT NULL,
   shoe_type type DEFAULT 'Daily',
   miles INT DEFAULT 0,
-  life_left INT DEFAULT 0,
+  life_left INT DEFAULT 400,
   shoe_status status DEFAULT 'Current',
   user_id INT
 );

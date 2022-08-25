@@ -22,31 +22,40 @@ const Login = () => {
   const handleSubmit = () => {
     //we want a fetch to /api/login path way 
     fetch('/api/login', {
+      //this will be a post request 
       method:'POST',
+      //header type is app/json
       headers: {
         'Content-Type': 'application/JSON',
       },
+      //body we want to json stringify and pass the username and password in the req body 
       body: JSON.stringify({
         username: usernameRef.current.value,
         password: passwordRef.current.value,
       })
     })
+    //we want to promise chain to take the resposne and json it 
       .then((res) => {
+        //console.log(res)
         return res.json()
       })
-      .then((res) => {
-        if (res === 'unsucessful') {
-          window.alert('Incorrect credentials provided')
+      //then we want to check if the response was the correct login credentials
+      .then(async (res) => {
+        if (res === 'Username or Password Incorrect') {
+          //we want a window alert if we get negative feedback from the back end
+          window.alert('Username or Password Incorrect')
         } else {
-        //response = user:{}, currentRotation:[]
-          const { user, currentRotation } = res;
+          //response = user:{}, currentRotation:[]
+          //deconstruct the response
+          const { user, currentRotation } = await res;
 
           const structuredRotation = {};
 
           currentRotation.forEach((element) => {
           //we want to destructure all the properties from current rotataion element
-            const { shoeId, model, brand, shoe_type, miles, life_left, shoe_status } = element
-            structuredRotation[shoeId] = {model:model, brand:brand, shoeType:shoe_type, miles:miles, lifeLeft:life_left, shoeStatus:shoe_status}
+            const { shoe_id, model, brand, shoe_type, miles, life_left, shoe_status } = element
+            structuredRotation[shoe_id] = {model:model, brand:brand, shoeType:shoe_type, miles:miles, lifeLeft:life_left, shoeStatus:shoe_status}
+            console.log(structuredRotation)
           } )
           dispatch(login(usernameRef.current.value, user.firstName, user.lastName,  user.email, structuredRotation))
           navigate('../', {replace: true});
@@ -54,11 +63,7 @@ const Login = () => {
       })
 
   }
-  //this will be a post request 
-  //header type is app/json
-  //body we want to json stringify and pass the username and password in the req body 
 
-  //we want to promise chain to take the resposne and json it 
   return (
     <div className='loginPage'>
       <div className='logoContainer'>
@@ -71,13 +76,10 @@ const Login = () => {
         <InputField id='password' label='Password: ' inputType='password' ref={passwordRef} />
       
         <div>
-          {/* need to add login handle click */}
           <button onClick={handleSubmit}>Login</button>
         </div>
         <div className='needAcc'>
           <Link to='/signup' className='create-account'>Create an Account Here</Link>
-          {/* <p>Need an Account <Link to='/signup' className='create-account'>Create an Account Here</Link></p> */}
-          {/* <p>Need an Account <a href="">Create Account Here</a></p> */}
         </div>
       </div>
     </div>

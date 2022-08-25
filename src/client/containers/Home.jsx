@@ -8,6 +8,7 @@ const Home = () => {
 
   return(
     <div className='homeContainer'>
+      <h2>This do me the mother fucking home page</h2>
       {/* need to get in header  */}
       {/* need to bring in navbar */}
       {/* need to get current rotation container in here */}

@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import App from './containers/App.jsx';
 import SignUp from './components/SignUp.jsx';
+import Home from './containers/Home.jsx';
+import AddShoe from './containers/AddShoe.jsx';
 // import CurrentRotation from './containers/CurrentRotation.jsx';
 // import  AddShoe from './containers/AddShoe.jsx';
 // import RetiredShoes from './containers/RetiredShoes.jsx';
@@ -24,9 +26,9 @@ root.render(
       <Routes>
         <Route exact path='/signup' element={<SignUp />} />
         <Route path='/' element={<App />}>
-          {/* <Route path='/home' element={<Home />}/> */}
+          <Route path='/addShoe' element={<AddShoe />} />
+          <Route path='/home' element={<Home />}/>
           {/* <Route path='/currentRotattion' element={<CurrentRotation />}/>
-            <Route path='/currentRotattion' element={<AddShoe />}/>
             <Route path='/currentRotattion' element={<RetiredShoes />}/>
             <Route path='/currentRotattion' element={<Settings />}/> */}
         </Route>
