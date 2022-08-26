@@ -11,8 +11,23 @@ const NavBar = (props) => {
   };
   const handleHome = () => {
     //make GET Request so that on click you get the most recent results of the current shoe rotation
-    fetch(`/api/current/:${props.username}`
-    )
+    fetch(`/api/current/:${props.username}`,{
+      method:'GET',
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+      .then(res => {
+        return res.json()
+      })
+      .then( async (res) => {
+      //then we need to take the res dispatch and set it to be the currentrotation for the state 
+        const { current_rotation } = res;
+        //we need to implement the for each method to be able to parse the res into a manner that is readable for the card to put in 
+
+        dispatch(login())
+
+      })
   } 
 
   return (
