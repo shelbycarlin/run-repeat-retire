@@ -1,5 +1,5 @@
 //first we want to require in the pacakges  for path and for html-webpackplugin
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 //we want to allow for exposts 
@@ -10,13 +10,13 @@ module.exports = {
   entry: './src/client/index.js',
   //we need to give a output path for compiled files 
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, './dist'),
+    filename: 'bundle.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Development",
-      template: path.resolve(__dirname, "src/index.html"),
+      title: 'Development',
+      template: path.resolve(__dirname, 'src/index.html'),
     }),
   ],
   module: {

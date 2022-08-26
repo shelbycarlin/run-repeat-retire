@@ -57,7 +57,6 @@ module.exports = {
         res.locals.login = 'Username or Password Incorrect';
         return next();
       } else {
-        console.log(data)
         res.locals.user = await data.rows[0];
         //console.log(res.locals.userId)
         //console.log(res.locals.userId);
@@ -99,14 +98,13 @@ module.exports = {
           });
         } else {
           //we want to pass forward a global variable containing the array of objects of current shoes
-          console.log(data.rows);
           res.locals.login = {
             user:{
               firstName:res.locals.user.first_name,
               lastName:res.locals.user.last_name,
               email:res.locals.user.email
             },
-            currentRotation:data.rows
+            current_Rotation:data.rows
           }
           return next();
         }

@@ -47,17 +47,17 @@ const Login = () => {
         } else {
           //response = user:{}, currentRotation:[]
           //deconstruct the response
-          const { user, currentRotation } = await res;
+          const { user, current_Rotation } = await res;
+          console.log(res)
 
-          const structuredRotation = {};
+          const currentRotation = {};
 
-          currentRotation.forEach((element) => {
+          current_Rotation.forEach((element) => {
           //we want to destructure all the properties from current rotataion element
-            const { shoe_id, model, brand, shoe_type, miles, life_left, shoe_status } = element
-            structuredRotation[shoe_id] = {model:model, brand:brand, shoeType:shoe_type, miles:miles, lifeLeft:life_left, shoeStatus:shoe_status}
-            console.log(structuredRotation)
+            const { shoe_id, shoe_title, model, brand, shoe_type, miles, life_left, shoe_status } = element
+            currentRotation[shoe_id] = {shoeTitle:shoe_title, model:model, brand:brand, shoeType:shoe_type, miles:miles, lifeLeft:life_left, shoeStatus:shoe_status}
           } )
-          dispatch(login(usernameRef.current.value, user.firstName, user.lastName,  user.email, structuredRotation))
+          dispatch(login(usernameRef.current.value, user.firstName, user.lastName,  user.email, currentRotation))
           navigate('../', {replace: true});
         }
       })

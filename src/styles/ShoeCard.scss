@@ -1,0 +1,61 @@
+@import './PaletteVariables.scss';
+
+.shoeCard{
+  margin: 1.5%;
+  padding: 2%;
+  width: 50%;
+  border: 3px solid $p-peach;
+  border-radius: 5px;
+
+  background-color: $p-white;
+
+  h2{
+    margin-top: 1px;
+    margin-bottom: 2%;
+    font-size: 29px;
+    //color: $p-red;
+    //padding:0%;
+  }
+  label{
+    //margin-top: -5px;
+    display: block;
+    padding: 2%;
+    font-size: 150%;
+    color: $p-darkBlue;
+    span{
+      color: $p-mediumBlue;
+      font-size: 23px;
+      padding: 1%;
+    }
+    .llStyle{
+     padding-top: 1%;
+      .llContainer{
+        height: 20;
+        width:100%;
+        background-color: $p-midOrange;
+        border-radius: 5px;
+        margin: 50;
+        .llFiller{
+          height: 100%;
+          background-color:$p-orange;
+          border-radius: 5px;
+          text-align:left;
+        
+          .llLabel{
+            padding: 9px;
+            color: $p-white;
+            font-weight: bold;
+          
+          }
+        }
+      }
+    }
+  }
+}
+.shoeCard:hover{
+  background-color: $p-peach;
+  cursor: pointer;
+  h2{
+    //color:$p-lightOrange
+  }
+}
