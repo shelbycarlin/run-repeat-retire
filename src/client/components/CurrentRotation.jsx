@@ -1,36 +1,34 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-//import ShoeCard from './ShoeCard.jsx'
+import ShoeCard from './ShoeCard.jsx'
+import '../../styles/CurrentRotation.scss'
+// model
+//brand
+//type
+//miles
+//lifeLeft
+      
 
-const CurrentRotation = () => {
+const CurrentRotation = (props) => {
+//declare currentRotation from props
+  const currentRotation = props.currentRotation
+  //declare a rotation array to push the html elements onto 
+  const rotationArray = [];
+  //for each object key from the currentRotation object
+  Object.keys(currentRotation).forEach(id =>{
+    //declare shoeObj for each key
+    const shoeObj = currentRotation[id];
+    console.log(shoeObj)
+    rotationArray.push(<ShoeCard key={id} shoeId={id} shoeTitle={shoeObj.shoeTitle} model={shoeObj.model} brand={shoeObj.brand} shoeType={shoeObj.shoeType} miles={shoeObj.miles} lifeLeft={shoeObj.lifeLeft}/>)
 
-const handleAddShoe = () =>{
-//we want a pop up over lay here 
-//we want input fields 
-    //Model
-    //Brand
-    //Type:drop down menu
-      //Daily
-      //Tempo
-      //Recovery
-      //Road Race
-      //Trail
-      //Track Spikes
-      //X Country Spikes
-    //Miles
-//Add Shoe To Rotation Button 
-
-//then we need to make a fetch for a post request
-
-  }
-  //need a fetch for get request for current rotations 
-  //then with in we need to json the response
-  //we need a for loop to create the shoe cards 
-
+  })
 
   return(
-    <div>
-      <h2>Current Rotation</h2>
-      <button onClick={handleAddShoe}>Add Shoe</button>
+    <div className='currentRotationContainer'>
+      <h1>Current Rotation</h1>
+      <div className='rotationArrayContainer'>
+        {rotationArray}
+      </div>
     </div>
   )
 }

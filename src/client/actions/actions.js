@@ -7,7 +7,7 @@ export const updateProfile = (user) => ({ type: Types.UPDATE_USER, payload: { us
 
 export const formSubmittionStatus = (status) => ({ type: Types.FORM_SUBMITION_STATUS, payload: { status } });
 
-export const login = (user) => ({ type: Types.LOGIN, payload: { user } });
+export const login = (username, firstName, lastName, email, currentRotation) => ({ type: Types.LOGIN, payload: { username, firstName, lastName, email, currentRotation } });
 
 export const logOut = () => ({ type:Types.LOGOUT })
 

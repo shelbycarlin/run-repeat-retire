@@ -1,0 +1,25 @@
+@import './PaletteVariables.scss';
+
+.headerContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color:$p-white;
+  img{
+   margin-top: -20%;
+   margin-left: -25%;
+   margin-right: -19%;
+   margin-bottom: -29%;
+
+  width: 700px;
+  height: 700px;
+  }
+  h1{
+    color: $p-darkBlue;
+    font-size: 45px;
+    font-family:'Staatliches';
+    margin-top: -.01%;
+    margin-bottom: 1%;
+
+  }
+}

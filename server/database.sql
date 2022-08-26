@@ -24,6 +24,7 @@ CREATE TABLE Users (
 
 CREATE TABLE Shoes (
   shoe_id serial PRIMARY KEY,
+  shoe_title varchar NOT NULL,
   model varchar NOT NULL,
   brand varchar NOT NULL,
   shoe_type type DEFAULT 'Daily',
