@@ -70,6 +70,7 @@ const UserReducer = (state = intialState, action) => {
   //   };
 
   case Types.LOGOUT:
+    //maybe do we want to reasign state to be intial state?
     return {
       ...state,
       loginStatus: false,
