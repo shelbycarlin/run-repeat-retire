@@ -24,7 +24,8 @@ root.render(
       <Routes>
         <Route exact path='/signup' element={<SignUp />} />
         <Route path='/' element={<App />}>
-          <Route path='/addShoe' element={<AddShoeContainer />} />
+          {/* if app breaks for addshoe path change back to addShoe */}
+          <Route path='/addshoe' element={<AddShoeContainer />} />
           <Route path='/retiredshoes' element={<RetiredShoes />} />
           <Route path='/settings' element={<Settings />} />
           <Route path='/' element={<Home />} />
