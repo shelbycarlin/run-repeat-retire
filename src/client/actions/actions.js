@@ -1,13 +1,12 @@
 //import the constant action types 
 import { Types } from '../constants/Types';
 
-export const signUp = (user) => ({ type: Types.ADD_USER, payload: { user } });
+export const signUp = () => ({ type: Types.ADD_USER });
 
 // export const updateProfile = (user) => ({ type: Types.UPDATE_USER, payload: { user } });
+//export const addShoe = ()
 
-// export const formSubmittionStatus = (status) => ({ type: Types.FORM_SUBMITION_STATUS, payload: { status } });
-
-export const login = (username, firstName, lastName, email, currentRotation) => ({ type: Types.LOGIN, payload: { username, firstName, lastName, email, currentRotation } });
+export const login = (username, firstName, lastName, email, currentRotation, retiredShoes) => ({ type: Types.LOGIN, payload: { username, firstName, lastName, email, currentRotation, retiredShoes } });
 
 export const logOut = () => ({ type:Types.LOGOUT })
 
