@@ -57,6 +57,7 @@ const Login = () => {
             const { shoe_id, shoe_title, model, brand, shoe_type, miles, life_left, shoe_status } = element
             currentRotation[shoe_id] = {shoeTitle:shoe_title, model:model, brand:brand, shoeType:shoe_type, miles:miles, lifeLeft:life_left, shoeStatus:shoe_status}
           } )
+          console.log(currentRotation);
           dispatch(login(usernameRef.current.value, user.firstName, user.lastName,  user.email, currentRotation))
           navigate('../', {replace: true});
         }

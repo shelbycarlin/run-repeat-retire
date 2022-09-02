@@ -14,15 +14,15 @@ const intialState = {
     currentRotation: {},
     retiredShoes: {}
   },
-  add:{
-    addShoeTypeToggle: false,
-    addShoeId: '',
-    addShoeModel: '',
-    addShoeBrand: '',
-    addShoeType: '',
-    addShoeMiles: '',
-    addShoePercentage: '',
-  },
+  // add:{
+  //   addShoeTypeToggle: false,
+  //   addShoeId: '',
+  //   addShoeModel: '',
+  //   addShoeBrand: '',
+  //   addShoeType: '',
+  //   addShoeMiles: '',
+  //   addShoePercentage: '',
+  // },
   loginStatus:false,
   //addShoeImg:'',
 };
@@ -31,7 +31,7 @@ const UserReducer = (state = intialState, action) => {
   switch (action.type) {
   case Types.LOGIN:{
     //deconstruct the action payload 
-    const {username, firstName, lastName,email, currentRotation} = action.payload;
+    const {username, firstName, lastName,email, currentRotation, retiredShoes} = action.payload;
     //console.log('LOGIN', action.payload);
     return {
       ...state,
@@ -40,21 +40,20 @@ const UserReducer = (state = intialState, action) => {
         firstName:firstName,
         lastName:lastName,
         email:email,
-        currentRotation:currentRotation
+        currentRotation:currentRotation,
+        retiredShoes:retiredShoes
       },
       loginStatus:true,
     };
 
   }
-  // case Types.ADD_USER:
-  //   console.log('add user', action.payload.user);
+  case Types.ADD_USER:{
+    return {
+      ...state
+    }
 
-  //   return {
-  //     ...state,
-  //     profile: action.payload.user,
-  //     formSubmitted: false
-
-  //   };
+  }
+  
 
   // case Types.UPDATE_USER:
   //   return {
