@@ -23,37 +23,60 @@ const intialState = {
   //   addShoeMiles: '',
   //   addShoePercentage: '',
   // },
-  loginStatus:false,
+  loginStatus: false,
   //addShoeImg:'',
 };
 
 const UserReducer = (state = intialState, action) => {
   switch (action.type) {
-  case Types.LOGIN:{
+  case Types.LOGIN: {
     //deconstruct the action payload 
-    const {username, firstName, lastName,email, currentRotation, retiredShoes} = action.payload;
+    const { username, firstName, lastName, email, currentRotation, retiredShoes } = action.payload;
     //console.log('LOGIN', action.payload);
     return {
       ...state,
       profile: {
-        username:username,
-        firstName:firstName,
-        lastName:lastName,
-        email:email,
-        currentRotation:currentRotation,
-        retiredShoes:retiredShoes
+        username: username,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        currentRotation: currentRotation,
+        retiredShoes: retiredShoes
       },
-      loginStatus:true,
+      loginStatus: true,
     };
 
   }
-  case Types.ADD_USER:{
+  case Types.ADD_SHOE: {
+    const { shoeId, shoe_title, model, brand, shoe_type, miles, life_left, shoe_status } = action.payload;
     return {
-      ...state
-    }
+      ...state,
+      profile: {
+        currentRotation: {
+          ...state.profile.currentRotation,
+          shoeId: {
+            shoeTitle: shoe_title,
+            model: model,
+            brand: brand,
+            shoeType: shoe_type,
+            miles: miles,
+            lifeLeft: life_left,
+            shoe_status: shoe_status
+          }
+        }
+      }
+
+
+    };
 
   }
-  
+  case Types.ADD_USER: {
+    return {
+      ...state
+    };
+
+  }
+
 
   // case Types.UPDATE_USER:
   //   return {

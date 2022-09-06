@@ -1,18 +1,14 @@
 @import './PaletteVariables.scss';
 
 .currentRotationContainer{
-  // display: flex;
-  // flex-direction: column;
-  //flex-wrap: wrap;
-  //justify-content:space-around;
-  padding-right: 2%;
-  padding-left: 2%;
+ 
 
   color: $p-red;
   font-family: 'Staatliches';
   .rotationArrayContainer{
-    display: flex;
-    flex-direction: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr)
+  
   }
 
 }

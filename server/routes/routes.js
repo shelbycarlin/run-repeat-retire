@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 //require in the middleware controllers
 const { createAccount, login, getCurrentShoes } = require('../controller/accountController.js');
+const { addShoe } = require('../controller/shoeController.js');
 
 //post request for signup 
 router.post('/signup', createAccount, (req,res) => {
@@ -16,9 +17,9 @@ router.post('/login', login, getCurrentShoes, (req,res) => {
 })
 
 //post request for add shoes 
-// router.post('/addshoe/:username', (req,res) => {
-//   return res.status(200).json()
-// })
+router.post('/addshoe/:username', addShoe, (req,res) => {
+  return res.status(200).json(res.locals.shoeAdd)
+})
 
 //patch request for addmiles
 // router.patch('/addmiles/:username/:shoeid', (req,res) => {

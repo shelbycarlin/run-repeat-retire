@@ -50,6 +50,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname)
     },
+    historyApiFallback: true,
     //set up the proxy server for api
     proxy: {
       '/api': 'http://localhost:3000',
