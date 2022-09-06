@@ -3,6 +3,7 @@ const db = require('../models/dataModels');
 //import password hashing library Argon2
 const argon2 = require('argon2');
 
+
 module.exports = {
   //createAccount middleware function 
   //tested with postman and works
@@ -81,8 +82,8 @@ module.exports = {
     //console.log the res.locals variable
     if (!res.locals.login === 'Login Successful') {
       // this will return next and have res.locals.login not reassigned so it will pass forward the string of incorrect password
-      return next()
-    }else{
+      return next();
+    } else {
       //we also want to send forward username, firstname last name and email
       //declare the array passing in user_id and 'Current'
       const queryArray = [res.locals.user.user_id, 'Current'];
@@ -99,16 +100,16 @@ module.exports = {
         } else {
           //we want to pass forward a global variable containing the array of objects of current shoes
           res.locals.login = {
-            user:{
-              firstName:res.locals.user.first_name,
-              lastName:res.locals.user.last_name,
-              email:res.locals.user.email
+            user: {
+              firstName: res.locals.user.first_name,
+              lastName: res.locals.user.last_name,
+              email: res.locals.user.email
             },
-            current_Rotation:data.rows
-          }
+            current_Rotation: data.rows
+          };
           return next();
         }
-      }); 
+      });
     }
   }
 };

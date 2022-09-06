@@ -1,6 +1,7 @@
 import React from 'react';
 import AddShoe from '../components/AddShoe.jsx';
 import { useSelector } from 'react-redux';
+import '../../styles/AddShoe.scss'
 
 //need to pass down the username as a prop
 const AddShoeContainer = () =>{
