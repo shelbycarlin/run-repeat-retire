@@ -24,82 +24,99 @@ const intialState = {
   //   addShoePercentage: '',
   // },
   loginStatus: false,
+  //popupStatus:false,
   //addShoeImg:'',
 };
 
 const UserReducer = (state = intialState, action) => {
   switch (action.type) {
-  case Types.LOGIN: {
-    //deconstruct the action payload 
-    const { username, firstName, lastName, email, currentRotation, retiredShoes } = action.payload;
-    //console.log('LOGIN', action.payload);
-    return {
-      ...state,
-      profile: {
-        username: username,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        currentRotation: currentRotation,
-        retiredShoes: retiredShoes
-      },
-      loginStatus: true,
-    };
+    case Types.LOGIN: {
+      //deconstruct the action payload 
+      const { username, firstName, lastName, email, currentRotation, retiredShoes } = action.payload;
+      //console.log('LOGIN', action.payload);
+      return {
+        ...state,
+        profile: {
+          username: username,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          currentRotation: currentRotation,
+          retiredShoes: retiredShoes
+        },
+        loginStatus: true,
+      };
 
-  }
-  case Types.ADD_SHOE: {
-    const { shoeId, shoe_title, model, brand, shoe_type, miles, life_left, shoe_status } = action.payload;
-    return {
-      ...state,
-      profile: {
-        currentRotation: {
-          ...state.profile.currentRotation,
-          shoeId: {
-            shoeTitle: shoe_title,
-            model: model,
-            brand: brand,
-            shoeType: shoe_type,
-            miles: miles,
-            lifeLeft: life_left,
-            shoe_status: shoe_status
+    }
+    case Types.ADD_SHOE: {
+      const { shoeId, shoe_title, model, brand, shoe_type, miles, life_left, shoe_status, popUp_status } = action.payload;
+      return {
+        ...state,
+        profile: {
+          currentRotation: {
+            ...state.profile.currentRotation,
+            shoeId: {
+              shoeTitle: shoe_title,
+              model: model,
+              brand: brand,
+              shoeType: shoe_type,
+              miles: miles,
+              lifeLeft: life_left,
+              shoe_status: shoe_status,
+              popUpStatus: popUp_status
+            }
           }
         }
-      }
 
 
-    };
+      };
 
-  }
-  case Types.ADD_USER: {
-    return {
-      ...state
-    };
+    }
+    case Types.POPUP: {
+      const popUpStatus = action.payload;
+      return {
+        ...state,
+        profile: {
+          currentRotation: {
+            ...state.props.currentRotation,
+            shoeId: {
+              ...state.props.shoeId,
+              popUpStatus: popUpStatus
+            }
+          }
+        }
+      };
+    }
+    case Types.ADD_USER: {
+      return {
+        ...state
+      };
 
-  }
+    }
 
 
-  // case Types.UPDATE_USER:
-  //   return {
-  //     ...state,
-  //     profile: action.payload.user,
-  //     formSubmitted: false
-  //   };
+    // case Types.UPDATE_USER:
+    //   return {
+    //     ...state,
+    //     profile: action.payload.user,
+    //     formSubmitted: false
+    //   };
 
-  // case Types.FORM_SUBMITION_STATUS:
-  //   return {
-  //     ...state,
-  //     formSubmitted: action.payload.status,
-  //   };
+    // case Types.FORM_SUBMITION_STATUS:
+    //   return {
+    //     ...state,
+    //     formSubmitted: action.payload.status,
+    //   };
 
-  case Types.LOGOUT:
-    //maybe do we want to reasign state to be intial state?
-    return {
-      ...state,
-      loginStatus: false,
-    };
+    case Types.LOGOUT:
+      //maybe do we want to reasign state to be intial state?
+      return {
+        ...state,
+        loginStatus: false,
+      };
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
 export default UserReducer;

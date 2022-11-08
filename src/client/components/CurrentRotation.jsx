@@ -22,6 +22,7 @@ const CurrentRotation = (props) => {
     rotationArray.push(<ShoeCard key={id} shoeId={id} shoeTitle={shoeObj.shoeTitle} model={shoeObj.model} brand={shoeObj.brand} shoeType={shoeObj.shoeType} miles={shoeObj.miles} lifeLeft={shoeObj.lifeLeft}/>)
 
   })
+  //We need to add functionality to be able to click on the shoe and add/subtract miles from the shoe card 
 
   return(
     <div className='currentRotationContainer'>

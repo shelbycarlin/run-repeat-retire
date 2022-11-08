@@ -8,7 +8,8 @@ export const Types = {
   ADD_USER:'ADD_USER',
   UPDATE_USER:'UPDATE_USER',
   ADD_SHOE:'ADD_SHOE',
-  LOGOUT: 'LOGOUT'
+  LOGOUT: 'LOGOUT',
+  POPUP: 'POPUP'
 }
 
 //---------State Updates--------
